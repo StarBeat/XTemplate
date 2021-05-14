@@ -20,6 +20,9 @@
 *.mod
 *.smod
 
+#dir
+.history
+
 # Compiled Static libraries
 *.lai
 *.la
