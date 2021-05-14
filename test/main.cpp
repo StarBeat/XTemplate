@@ -4,7 +4,16 @@
 using namespace std;
 using namespace X::Delta;
 
-#include <vector>
+struct MyStruct
+{
+	void Fun1(int i) {}
+	static void Fun2() {}
+	void Fun3(int i, char* a, char b) {}
+	int operator()()
+	{ 
+		return 0; 
+	}
+};
 int main()
 {
 	using list = TypeList<int, float, bool>;
@@ -44,5 +53,13 @@ int main()
 
 	static_assert(IsUnique_v<list>);
 	static_assert(!IsUnique_v<PushFront_t<list, float>>);
-    return 0;
+	MyStruct s;
+	static_assert(is_same_v<void, FuncTraits_Return<decltype(MyStruct::Fun2)>>);
+	static_assert(is_same_v<TypeList<int>, FuncTraits_ArgList<decltype(MyStruct::Fun1)>>);
+	static_assert(is_same_v<TypeList<int,char*, char>, FuncTraits_ArgList<decltype(MyStruct::Fun3)>>);
+	static_assert(is_same_v<MyStruct, FuncTraits_Class<decltype(MyStruct::operator())>>);
+	static_assert(std::is_member_function_pointer_v<decltype(MyStruct::operator())>);
+	static_assert(std::is_member_pointer_v<long(MyStruct::*)>);
+	static_assert(is_same_v < MyStruct, decltype(s) >);
+	return 0;
 }

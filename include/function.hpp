@@ -1,29 +1,17 @@
 #include <type_traits>
 #include "type_list.hpp"
 
-namespace X
+namespace X::Delta
 {
-    namespace Delta
-    {
-        template<typename Sig>
-        struct FuncTraitsBase;
-        template<typename Ret, typename... Args>
-        struct FuncTraitsBase<Ret(Args ...)>{
-            using ArgList = TypeList<Args...>;
-            using Return = Ret;
-            using Signature = Ret(Args...);
-        };
+	template<typename T> struct FuncTraits;
 
- /*       template<bool is_function,typename T>
-        struct FuncTraits: FuncTraitsBase;
-        template<typename T>
-        struct FuncTraits<false, T> : FuncTraits<decltype(&std::decay_t<T>::operator())> {};
-        template<typename T>
-        struct FuncTraits<true, T> : FuncTraits<T> 
-        {
-            using Function = T;
-        };*/
+	template<typename T> using FuncTraits_Class = typename FuncTraits<T>::Class;
+	template<typename T> using FuncTraits_ArgList = typename FuncTraits<T>::ArgList;
+	template<typename T> using FuncTraits_Return = typename FuncTraits<T>::Return;
+	template<typename T> using FuncTraits_Signature = typename FuncTraits<T>::Signature;
+	template<typename T> using FuncTraits_Function = typename FuncTraits<T>::Function;
 
 
-    }
 }
+
+#include "function.inl"
