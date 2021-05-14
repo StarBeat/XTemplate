@@ -1,10 +1,11 @@
-target("test")
+target("xtemplate_test")
     set_languages("c11", "c++20")
     add_rules("mode.debug", "mode.release")
     set_kind("binary")
     
     add_includedirs("include/")
     add_headerfiles("include/*.hpp")
+    add_headerfiles("include/*.inl")
     add_files("test/*.cpp")
 
     if is_mode("debug") then
