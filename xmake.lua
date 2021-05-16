@@ -29,3 +29,4 @@ target("xtemplate_test")
             add_cxflags("/Oy")
         end
     end
+target_end()
