@@ -4,8 +4,7 @@ target("xtemplate_test")
     set_kind("binary")
     
     add_includedirs("include/")
-    add_headerfiles("include/*.hpp")
-    add_headerfiles("include/*.inl")
+
     add_files("test/*.cpp")
 
     if is_mode("debug") then
