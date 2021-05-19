@@ -16,7 +16,7 @@ template<typename... Ts>
 struct TypeList {};
 
 #pragma region const value
-constexpr std::size_t Find_fail = static_cast<std::size_t>(-1);
+constexpr std::size_t KFind_fail = static_cast<std::size_t>(-1);
 
 #pragma endregion
 #pragma region property
@@ -55,7 +55,7 @@ template<typename List, template<typename>class Op>
 constexpr std::size_t FindIf_v = FindIf<List, Op>::value;
 
 template<typename List, typename T>
-struct Contain : std::integral_constant<bool, Find_v<List, T> != Find_fail> {};
+struct Contain : std::integral_constant<bool, Find_v<List, T> != KFind_fail> {};
 template<typename List, typename T>
 constexpr bool Contain_v = Contain<List, T>::value;
 

@@ -39,10 +39,10 @@ int main()
     static_assert(Find_v<list, char> == KFind_fail);
 
     static_assert(Contain_v<list, int>);
-    static_assert(!Contain_v<list, int64>);
+    static_assert(!Contain_v<list, int64_t>);
 
     static_assert(ContainTs_v<list, int, float>);
-    static_assert(!ContainTs_v<list, int, int64>);
+    static_assert(!ContainTs_v<list, int, int64_t>);
 
     static_assert(ContainList_v<list, TypeList<>>);
     static_assert(ContainList_v<list, TypeList<int, float>>);
@@ -65,7 +65,7 @@ int main()
     static_assert(is_same_v<TypeList<int, char*, char>, FuncTraits_ArgList<decltype(&MyStruct::Fun3)>>);
     static_assert(is_same_v<MyStruct, FuncTraits_Class<decltype(&MyStruct::operator())>>);
     static_assert(std::is_member_function_pointer_v<decltype(&MyStruct::operator())>);
-    static_assert(std::is_member_pointer_v<int64(MyStruct::*)>);
+    static_assert(std::is_member_pointer_v<int64_t(MyStruct::*)>);
     static_assert(is_same_v < MyStruct, decltype(s) >);
     static_assert(std::is_same_v<void(int), FuncTraits_Signature<decltype(&MyStruct::Fun1)>>);
     return 0;

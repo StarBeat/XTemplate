@@ -26,7 +26,7 @@ namespace x::delta
 {
 
 template<typename Ret, typename... Args>
-struct FuncTraits<Ret(Args...)> : Alpha::FuncTraitsBase<Ret(Args...)> {};
+struct FuncTraits<Ret(Args...)> : alpha::FuncTraitsBase<Ret(Args...)> {};
 template<typename Func>
 struct FuncTraits<Func*> : FuncTraits<Func>
 {
@@ -40,7 +40,7 @@ struct FuncTraits<Func T::*> : FuncTraits<Func>
     using Function = Func;
 };
 template<typename T>
-struct FuncTraits : Alpha::FuncTraitsDispatch<std::is_function_v<T>, T> {};
+struct FuncTraits : alpha::FuncTraitsDispatch<std::is_function_v<T>, T> {};
 
 }  // namespace x::delta
 namespace x::delta::alpha

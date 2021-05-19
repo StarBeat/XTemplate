@@ -22,16 +22,16 @@ namespace x::delta::alpha
 namespace x::delta
 {
 template<typename List>
-struct IsUnique : Alpha::IsUnique<List> {};
+struct IsUnique : alpha::IsUnique<List> {};
 
 template<typename List, typename T>
-struct Find : Alpha::Find<List, T> { };
+struct Find : alpha::Find<List, T> { };
 
 template<typename List, template<typename>class Op>
-struct FindIf : Alpha::FindIf<List, Op> { };
+struct FindIf : alpha::FindIf<List, Op> { };
 
 template<typename List, template <typename I, typename X> class Op, typename I>
-struct Accumulate : Alpha::Accumulate<List, Op, I> {};
+struct Accumulate : alpha::Accumulate<List, Op, I> {};
 
 template<template<typename T> class Op, typename... Ts>
 struct Transform<TypeList<Ts...>, Op> : std::type_identity<TypeList<typename Op<Ts>::type...>> {};
@@ -76,14 +76,14 @@ struct IsUnique<TypeList<Head, Tail...>, false> : IsUnique<TypeList<Tail...>, Co
 template<typename T, std::size_t N, typename... Ts>
 struct Find<TypeList<Ts...>, T, N, true> : std::integral_constant<std::size_t, N - 1> {};
 template<typename T, std::size_t N>
-struct Find<TypeList<>, T, N, false> : std::integral_constant<std::size_t, Find_fail> {};
+struct Find<TypeList<>, T, N, false> : std::integral_constant<std::size_t, KFind_fail> {};
 template<typename T, typename Head, std::size_t N, typename... Tail>
 struct Find<TypeList<Head, Tail...>, T, N, false> : Find<TypeList<Tail...>, T, N + 1, std::is_same_v<T, Head>> {};
 
 template<template<typename>class Op, std::size_t N, typename... Ts>
 struct FindIf<TypeList<Ts...>, Op, N, true> : std::integral_constant<std::size_t, N - 1> {};
 template<template<typename>class Op, std::size_t N>
-struct FindIf<TypeList<>, Op, N, false> : std::integral_constant<std::size_t, Find_fail> {};
+struct FindIf<TypeList<>, Op, N, false> : std::integral_constant<std::size_t, KFind_fail> {};
 template<template<typename>class Op, typename Head, std::size_t N, typename... Tail>
 struct FindIf<TypeList<Head, Tail...>, Op, N, false> : FindIf<TypeList<Tail...>, Op, N + 1, Op<Head>::value> {};
 
