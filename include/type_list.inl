@@ -16,7 +16,7 @@ namespace x::delta::alpha
     template<typename List, template <typename I, typename X> class Op, typename I, bool = IsEmpty_v<List>>
     struct Accumulate;
 
-    template<typename List, bool haveSame = false>
+    template<typename List, bool have_same = false>
     struct IsUnique;
 }  // namespace x::delta::alpha
 namespace x::delta
