@@ -4,6 +4,10 @@ target("xtemplate_test")
     set_kind("binary")
     
     add_includedirs("include/")
+    
+    add_headerfiles("include/*.h")
+    add_headerfiles("include/*.hpp")
+    add_headerfiles("include/*.inl")
 
     add_files("test/*.cpp")
 

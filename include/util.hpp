@@ -11,6 +11,28 @@ namespace delta
 {
 namespace util
 {
+enum class ReferenceMode
+{
+    EnumNone,
+    EnumLeft,
+    EnumRight
+};
+enum class CVRefMode : std::uint8_t
+{
+    EnumNone = 0b0000,
+    EnumLeft = 0b0001,
+    EnumRight = 0b0010,
+    EnumConst = 0b0100,
+    EnumConstLeft = 0b0101,
+    EnumConstRight = 0b0110,
+    EnumVolatile = 0b1000,
+    EnumVolatileLeft = 0b1001,
+    EnumVolatileRight = 0b1010,
+    EnumCV = 0b1100,
+    EnumCVLeft = 0b1101,
+    EnumCVRight = 0b1110,
+};
+
 template<typename Instance, template<typename...> class T>
 struct is_instance_of : std::false_type {};
 template<typename... Args, template<typename...> class T>
