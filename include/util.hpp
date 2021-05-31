@@ -51,9 +51,9 @@ template<typename T>
 struct is_function_pointer<std::enable_if_t<std::is_pointer_v<T>&& std::is_function_v<std::remove_pointer_t<T>>>, T> : std::true_type {};
 
 template<typename T>
-concept HasDefauleConstructorClass = requires(T * t)
+concept HasDefauleConstructorClass = requires(T)
 {
-    t = new T();
+    std::is_same_v<decltype(*new T()), decltype(T())>;
 };
 
 template<HasDefauleConstructorClass T>
