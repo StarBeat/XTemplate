@@ -61,6 +61,7 @@ int main()
     MyStruct s;
     static_assert(is_same_v<void, FuncTraits_Return<decltype(MyStruct::Fun2)>>);
     static_assert(is_same_v<void, FuncTraits_Return<decltype(&MyStruct::Fun2)>>);
+    static_assert(is_same_v<std::tuple<int>, FuncTraits_ArgTuple<decltype(&MyStruct::Fun1)>>);
     static_assert(is_same_v<TypeList<int>, FuncTraits_ArgList<decltype(&MyStruct::Fun1)>>);
     static_assert(is_same_v<TypeList<int, char*, char>, FuncTraits_ArgList<decltype(&MyStruct::Fun3)>>);
     static_assert(is_same_v<MyStruct, FuncTraits_Class<decltype(&MyStruct::operator())>>);

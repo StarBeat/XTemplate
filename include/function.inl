@@ -3,6 +3,7 @@
 */
 
 #pragma once
+#include<tuple>
 
 namespace x::delta::alpha
 {
@@ -12,6 +13,7 @@ template<bool is_const, bool is_volatile, ReferenceMode ref_mode, bool is_noexce
 struct FuncTraitsBase<is_const, is_volatile, ref_mode, is_noexcept, Ret(Args ...)>
 {
     using ArgList = TypeList<Args...>;
+    using ArgTuple = std::tuple<typename std::decay<Args>::type...>;
     using Return = Ret;
     using Signature = Ret(Args...);
 };

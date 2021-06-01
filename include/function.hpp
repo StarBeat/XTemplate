@@ -16,6 +16,8 @@ namespace x::delta
     template<typename T>
     using FuncTraits_ArgList = typename FuncTraits<T>::ArgList;
     template<typename T>
+    using FuncTraits_ArgTuple = typename FuncTraits<T>::ArgTuple;
+    template<typename T>
     using FuncTraits_Return = typename FuncTraits<T>::Return;
     template<typename T>
     using FuncTraits_Signature = typename FuncTraits<T>::Signature;
